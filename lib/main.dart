@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData.dark(
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: true,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -33,19 +33,31 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: CustomPaint(
-          size: Size(
-            100,
-            100,
-          ),
-          painter: MyPaint(),
-        ),
+      backgroundColor: Colors.black,
+      body: SizedBox(
+        child: size.width > 1184 && size.height > 604
+            ? Container(
+                color: Colors.blueGrey,
+                constraints: BoxConstraints(
+                  maxWidth: 1480,
+                  minWidth: 1184,
+                  maxHeight: 604,
+                  minHeight: 604,
+                ),
+                child: AspectRatio(
+                  aspectRatio: 2.59,
+                  child: CustomPaint(
+                    painter: MyPaint(),
+                  ),
+                ),
+              )
+            : const Center(
+                child: Text(
+                  'Screen is too small to show the UI',
+                ),
+              ),
       ),
     );
   }
