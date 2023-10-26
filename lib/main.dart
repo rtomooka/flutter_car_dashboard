@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_car_dashboard/view/my_paint.dart';
+import 'package:flutter_car_dashboard/view/hmi_shape_painter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SizedBox(
         child: size.width > 1184 && size.height > 604
             ? Container(
-                color: Colors.blueGrey,
+                // color: Colors.blueGrey,
                 constraints: BoxConstraints(
                   maxWidth: 1480,
                   minWidth: 1184,
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: AspectRatio(
                   aspectRatio: 2.59,
                   child: CustomPaint(
-                    painter: MyPaint(),
+                    painter: HmiShapePainter(),
                   ),
                 ),
               )
