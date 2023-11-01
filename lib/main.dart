@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_car_dashboard/constants.dart';
 import 'package:flutter_car_dashboard/view/car_indicators.dart';
+import 'package:flutter_car_dashboard/view/current_speed.dart';
 import 'package:flutter_car_dashboard/view/hmi_shape_painter.dart';
 import 'package:flutter_car_dashboard/view/time_and_temp.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ? Container(
                 margin: const EdgeInsets.all(16),
                 // color: Colors.blueGrey,
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: 1480,
                   minWidth: 1184,
                   maxHeight: 604,
@@ -68,6 +70,29 @@ class _MyHomePageState extends State<MyHomePage> {
                                     height: defaultPadding * 1.25,
                                   ),
                                   CarIndicators(),
+                                  MaxGap(20),
+                                  CurrentSpeed(
+                                    speed: 50,
+                                  ),
+                                  MaxGap(20),
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/backlight_high.svg",
+                                        height: 32,
+                                      ),
+                                      MaxGap(20),
+                                      Text(
+                                        "100 km/h",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium
+                                            ?.copyWith(
+                                              color: primaryColor,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               )
                             ],
