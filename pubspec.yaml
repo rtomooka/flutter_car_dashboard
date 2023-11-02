@@ -64,6 +64,7 @@ flutter:
   assets:
     - assets/backlight_high.svg
     - assets/backlight_low.svg
+    - assets/speed.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
